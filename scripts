@@ -1,0 +1,15 @@
+--variables
+local piedra = script.Parent--padre del script que es la parte
+local confirmador = false --verificar la pieeza
+local coolDown = 5
+
+piedra.Touched:Connect(function(hit)
+	if hit.Parent:FindFirstChild("Humanoid")then
+		if not confirmador then
+			confirmador = true
+			hit.Parent.Humanoid.Health = 0
+			wait(coolDown)
+			confirmador= false
+		end
+	end
+end)
